@@ -1,0 +1,22 @@
+---
+budibase_jwt_secret: d953c4ea298f122721a701551
+budibase_minio_access_key: 6250f5ff106548bf972eba689af50fd4
+budibase_minio_secret_key: e58493ec31da4a6a91f79fa46312daa2
+budibase_redis_password: fcde076a0b5941f592e6b96873b6768a
+budibase_couchdb_user: ec033d50c2a241a5a931c8da16893e1f
+budibase_couchdb_password: 6f46b35d020641b5b529b098e0e94c75
+budibase_internal_api_key: 3ccd101bf6fe49aaa8fd721423885f65
+budibase_app_port: "4001"
+budibase_architecture: amd
+budibase_environment: PRODUCTION
+budibase_cluster_port: "80"
+budibase_deployment_environment: docker
+budibase_host_port: "80"
+budibase_minio_url: http://localhost:9000
+budibase_node_env: production
+budibase_posthog_token: phc_bIjZL7oh2GEUd2vqvTBH8WvrX0fWTFQMs6H5KQxiUxU
+budibase_redis_url: localhost:6379
+budibase_self_hosted: "1"
+budibase_worker_port: "4002"
+budibase_worker_url: http://localhost:4002
+budibase_apps_url: http://localhost:4001

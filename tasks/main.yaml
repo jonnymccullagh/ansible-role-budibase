@@ -1,0 +1,52 @@
+---
+- name: Create directory /data
+  ansible.builtin.file:
+    path: /data
+    state: directory
+    owner: root
+    group: root
+    mode: '755'
+
+- name: Create directory /data/budibase
+  ansible.builtin.file:
+    path: /data/budibase
+    state: directory
+    owner: root
+    group: root
+    mode: '755'
+
+- name: Budibase Container
+  community.docker.docker_container:
+    name: budibase
+    image: "budibase/budibase"
+    state: started
+    container_default_behavior: no_defaults
+    restart_policy: on-failure
+    restart_retries: 5
+    restart: "no"
+    network_mode: bridge
+    ports:
+      - "{{ budibase_host_port }}:80"
+    volumes:
+      - /data/budibase:/data
+    env:
+      JWT_SECRET: "{{ budibase_jwt_secret }}"
+      MINIO_ACCESS_KEY: "{{ budibase_minio_access_key }}"
+      MINIO_SECRET_KEY: "{{ budibase_minio_secret_key }}"
+      REDIS_PASSWORD: "{{ budibase_redis_password }}"
+      COUCHDB_USER: "{{ budibase_couchdb_user }}"
+      COUCHDB_PASSWORD: "{{ budibase_couchdb_password }}"
+      INTERNAL_API_KEY: "{{ budibase_internal_api_key }}"
+      APP_PORT: "{{ budibase_app_port }}"
+      ARCHITECTURE: "{{ budibase_architecture }}"
+      BUDIBASE_ENVIRONMENT: "{{ budibase_environment }}"
+      CLUSTER_PORT: "{{ budibase_cluster_port }}"
+      DEPLOYMENT_ENVIRONMENT: "{{ budibase_deployment_environment }}"
+      MINIO_URL: "{{ budibase_minio_url }}"
+      NODE_ENV: "{{ budibase_node_env }}"
+      POSTHOG_TOKEN: "{{ budibase_posthog_token }}"
+      REDIS_URL: "{{ budibase_redis_url }}"
+      SELF_HOSTED: "{{ budibase_self_hosted }}"
+      WORKER_PORT: "{{ budibase_worker_port }}"
+      WORKER_URL: "{{ budibase_worker_url }}"
+      APPS_URL: "{{ budibase_apps_url }}"
